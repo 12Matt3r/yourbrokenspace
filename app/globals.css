@@ -1,0 +1,112 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+}
+
+@layer base {
+  /* Default (Original Dark) Theme */
+  :root, [data-theme='default'] {
+    --background: 300 33% 10%;
+    --foreground: 0 0% 100%;
+    --card: 300 25% 15%;
+    --card-foreground: 0 0% 100%;
+    --popover: 300 25% 15%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 300 85% 60%;
+    --primary-foreground: 300 85% 98%;
+    --secondary: 300 40% 30%;
+    --secondary-foreground: 300 40% 90%;
+    --muted: 300 20% 30%;
+    --muted-foreground: 300 35% 75%;
+    --accent: 300 85% 65%;
+    --accent-foreground: 300 20% 95%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 300 34% 21%;
+    --input: 300 34% 25%;
+    --ring: 300 85% 60%;
+    --radius: 0.5rem;
+  }
+  
+  [data-theme="zen-garden"] {
+    --background: 100 15% 12%;
+    --foreground: 90 20% 88%;
+    --card: 110 15% 16%;
+    --card-foreground: 90 20% 88%;
+    --popover: 110 15% 16%;
+    --popover-foreground: 90 20% 88%;
+    --primary: 140 40% 60%;
+    --primary-foreground: 140 40% 10%;
+    --secondary: 110 20% 30%;
+    --secondary-foreground: 110 20% 85%;
+    --muted: 100 10% 25%;
+    --muted-foreground: 100 10% 65%;
+    --accent: 340 60% 70%;
+    --accent-foreground: 340 60% 15%;
+    --destructive: 0 50% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 110 10% 25%;
+    --input: 110 10% 30%;
+    --ring: 140 40% 60%;
+    --radius: 0.75rem;
+  }
+
+  [data-theme="arcade-retro"] {
+    --background: 240 20% 10%;
+    --foreground: 240 10% 90%;
+    --card: 240 20% 12%;
+    --card-foreground: 240 10% 90%;
+    --popover: 240 20% 12%;
+    --popover-foreground: 240 10% 90%;
+    --primary: 320 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 50% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 15% 25%;
+    --muted-foreground: 240 10% 60%;
+    --accent: 180 90% 55%;
+    --accent-foreground: 180 100% 10%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 15% 25%;
+    --input: 240 15% 30%;
+    --ring: 320 90% 60%;
+    --radius: 0.3rem;
+  }
+  
+  [data-theme="cyberpunk"] {
+    --background: 220 30% 5%;
+    --foreground: 180 100% 85%;
+    --card: 220 25% 10%;
+    --card-foreground: 180 100% 85%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 180 100% 85%;
+    --primary: 50 100% 50%;
+    --primary-foreground: 220 30% 5%;
+    --secondary: 300 50% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 20%;
+    --muted-foreground: 220 15% 65%;
+    --accent: 300 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 30%;
+    --input: 220 20% 35%;
+    --ring: 50 100% 50%;
+    --radius: 0.1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
