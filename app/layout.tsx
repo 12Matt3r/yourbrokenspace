@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   },
 };
 
+const ThemeInitializationScript = `(function() {
+  const THEME_KEY = 'yourspace-theme';
+  const VALID_THEMES = ['default', 'zen-garden', 'arcade-retro', 'cyberpunk'];
+  const DEFAULT_THEME = 'default';
+  try {
+    let theme = localStorage.getItem(THEME_KEY);
+    if (!theme || !VALID_THEMES.includes(theme)) {
+      theme = DEFAULT_THEME;
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    // In case of any error, fall back to the default theme.
+    document.documentElement.setAttribute('data-theme', DEFAULT_THEME);
+  }
+})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: ThemeInitializationScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

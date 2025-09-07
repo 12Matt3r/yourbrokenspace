@@ -25,9 +25,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const setTheme = useCallback((newTheme: Theme) => {
     setThemeState(newTheme);
     localStorage.setItem('yourspace-theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
   }, []);
 
+  // Whenever the theme state changes, synchronize it to the DOM.
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);

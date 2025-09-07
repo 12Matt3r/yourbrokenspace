@@ -15,11 +15,8 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-// This component is rendered only when Firebase auth is available.
-// It contains all the hooks and logic related to authentication.
-function AuthEnabledUserProvider({ children }: { children: ReactNode }) {
-  // We can use the non-null assertion (!) because we know `auth` is not null here.
-  const [user, authLoading, authError] = useAuthState(auth!);
+export function UserProvider({ children }: { children: ReactNode }) {
+  const [user, authLoading, authError] = useAuthState(auth);
   const [userProfile, setUserProfile] = useState<UserProfileData | null>(null);
   const [profileLoading, setProfileLoading] = useState(true);
   const [profileError, setProfileError] = useState<Error | null>(null);
@@ -63,18 +60,6 @@ function AuthEnabledUserProvider({ children }: { children: ReactNode }) {
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
-}
-
-export function UserProvider({ children }: { children: ReactNode }) {
-  // If Firebase is not configured, the imported `auth` object will be null.
-  if (!auth) {
-    // Provide a default, "logged-out" state so the app doesn't crash.
-    const value = { userProfile: null, loading: false, error: null };
-    return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
-  }
-
-  // If Firebase is configured, render the component that handles auth logic.
-  return <AuthEnabledUserProvider>{children}</AuthEnabledUserProvider>;
 }
 
 export function useUser() {
