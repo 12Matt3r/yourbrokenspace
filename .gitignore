@@ -6,6 +6,7 @@
 # build artifacts
 .next/
 out/
+coverage/
 
 # misc
 .env.local
