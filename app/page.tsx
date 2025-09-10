@@ -8,24 +8,28 @@ const features = [
     title: 'Modular Profiles',
     description: 'Craft a unique online presence with customizable profile modules. Showcase your work, skills, and personality in a way that truly represents you.',
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBInhVBDa134Afgi1K-CAclG9wyeMXzrUgu9F2S0Qvi3XtaSpgokD1buNXyuTSCMUvUkZ5GSOO-ykF7XP3CrIX24qvOsh6U-2-Peh6J0ocLYBLELWhdySUAobGwbNOWG0sK0QPIQ9nCdVEvuhXdcVMTYXva3JgZtx_r9bkUM9mRNDSdKPx4jjLmeCV8af7JAUWm3mdu6NKPt9Rf8RGVMfrvScEWMwhn_nUb4K7TRkwCLIxATGIJz02t8kBw8bxVivVwW4o3qm_SIkhT",
+    altText: "A minimalist wooden shelf with a small potted plant and a diffuser, representing a clean and customizable profile.",
     aiHint: "customizable profile interface",
   },
   {
     title: 'AI-Powered Discovery',
     description: 'Explore new creative avenues with our AI-driven discovery engine. Get personalized recommendations, find inspiration, and connect with like-minded creators.',
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfhX0ZjAOZOaK-2W8i8PLhfYTRdNfGj2v1u880vOFMlVVrwwYMD83Jj_9j9fL_NtgN5f3vxs0GgxMn_I-SI4EOeWm58bOyWf90Eeua9OVadPMOHi2-qzLabDRYCEgREoZQrR4oTDQlYjJeS0ndL6ozCBF_7Uo0FLWiei4IjkSFeqS2mg3VH5F_l-5-uz7y9gIki9XBLxNnJzOz8ZOSbxixI3-jscOzRX16o5v80v2LxPSCzF_7qEsBxC8alUVQh4RzTOHqTrNDliGx",
+    altText: "A small, vibrant plant sprouting in a pot, symbolizing growth and new ideas discovered through AI.",
     aiHint: "ai data visualization",
   },
   {
     title: 'Collaboration Tools',
     description: 'Collaborate effortlessly with built-in tools for project management, communication, and file sharing. Bring your creative visions to life, together.',
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDqGyvy2F9kc7lOHaVev2gbXq2-jLPW2GwXRA6u3uC4uZAJ6NDU83YiOBl5_0eyQWAAP1ATjhAsjpfnEMkEHbG8Ygy1kkhEaz7fywYvtN-sIFQDHSiuNfr2zenSUX2ziQx9nAcgfv055zyfUYyS_FIAxF5Fc2pBnuuUkTZ7f7d6a8szgZWiYhO0q8BqzhW6c4CunfG6lkrB6r0BsIP-Pr8xFi8VXtIN0w6pa0rYKyarUJ2jtDxoNaqAEFsAMn1pVjxG8RmfK711TR5f",
+    altText: "A clean and modern workspace with a central desk and multiple chairs, representing a collaborative environment.",
     aiHint: "team collaboration interface",
   },
   {
     title: 'Monetization Options',
     description: 'Turn your passion into profit with flexible monetization options. Sell your creations, offer subscriptions, or receive direct support from your audience.',
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8JvaPuwrVDrVoQxtkHDJi93eEVE-YhsTH42WvF3v15tYrYoiufmkmw2Ww49-MRed8Oisd7f8eC85izoroocqH_fCwAoQBlNlS0XqNWxbiXR5HHD9WK9k4KqUEl8Eczn6gzLSwYHzgiM4yXIqYttGv7aW7FG6HIB5Vi1IMVuSyYeGkt2Pj36NsFuWVriAFix_XwlmyALbVIQkSPxQQ0-e_4m0viDCeW7TZcJNwzdMLcXjC1RUkIGn_B_41c7CcAQksDBr5PRKjZFqW",
+    altText: "A modern laptop displaying a clean dashboard interface, illustrating digital monetization tools for creators.",
     aiHint: "creator economy dashboard",
   },
 ];
@@ -70,7 +74,7 @@ export default function HomePage() {
                 <div className="w-full relative aspect-video rounded-lg overflow-hidden">
                   <Image
                     src={feature.image}
-                    alt={feature.title}
+                    alt={feature.altText}
                     fill
                     style={{objectFit: 'cover'}}
                     data-ai-hint={feature.aiHint}

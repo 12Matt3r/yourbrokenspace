@@ -19,21 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-const ThemeInitializationScript = `(function() {
-  const THEME_KEY = 'yourspace-theme';
-  const VALID_THEMES = ['default', 'zen-garden', 'arcade-retro', 'cyberpunk'];
-  const DEFAULT_THEME = 'default';
-  try {
-    let theme = localStorage.getItem(THEME_KEY);
-    if (!theme || !VALID_THEMES.includes(theme)) {
-      theme = DEFAULT_THEME;
-    }
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {
-    // In case of any error, fall back to the default theme.
-    document.documentElement.setAttribute('data-theme', DEFAULT_THEME);
-  }
-})()`;
+const ThemeInitializationScript = `(function(){const d='yourspace-theme-id',e='yourspace-theme-registry',f='dark';function a(b,c){const g=document.documentElement;g.setAttribute('data-theme',b);let h=b==='dark';b.startsWith('custom:')&&c?.[b]&&(h=c[b].tokens.mode==='dark');g.classList.toggle('dark',h)}try{const b=localStorage.getItem(d),c=localStorage.getItem(e),g=c?JSON.parse(c):{};b?a(b,g):a(f,{})}catch(b){a(f,{})}})();`;
 
 export default function RootLayout({
   children,
