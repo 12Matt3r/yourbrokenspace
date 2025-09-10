@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
+const ThemeInitializationScript = `(function(){const d='yourspace-theme-id',e='yourspace-theme-registry',f='dark';function a(b,c){const g=document.documentElement;g.setAttribute('data-theme',b);let h=b==='dark';b.startsWith('custom:')&&c?.[b]&&(h=c[b].tokens.mode==='dark');g.classList.toggle('dark',h)}try{const b=localStorage.getItem(d),c=localStorage.getItem(e),g=c?JSON.parse(c):{};b?a(b,g):a(f,{})}catch(b){a(f,{})}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: ThemeInitializationScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
