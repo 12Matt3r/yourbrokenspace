@@ -1,0 +1,29 @@
+:root {
+  /* colors */
+  --color-bg: #ffffff;
+  --color-fg: #0b0b0f;
+  --color-muted: #6b7280;
+  --color-primary: #7c3aed;
+
+  /* typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* elevation */
+  --shadow-1: 0 1px 2px rgba(0,0,0,.08);
+  --shadow-2: 0 4px 12px rgba(0,0,0,.12);
+}
+
+:root[data-theme="dark"], .theme-dark {
+  --color-bg: #0b0b0f;
+  --color-fg: #eef2ff;
+  --color-muted: #9aa0ab;
+  --color-primary: #a78bfa;
+}
+
+/* base usage (keeps site readable before React hydrates) */
+html, body { background: var(--color-bg); color: var(--color-fg); font-family: var(--font-sans); }

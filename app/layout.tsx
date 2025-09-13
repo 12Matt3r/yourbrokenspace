@@ -1,15 +1,18 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { cn } from '@/lib/utils';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
-import { cn } from '@/lib/utils';
 import { BottomTabBar } from '@/components/layout/BottomTabBar';
-import { Providers } from './providers';
 import { MentorAIDrawer } from '@/components/feature/mentor-ai/MentorAIDrawer';
 import { MentorAIButton } from '@/components/feature/mentor-ai/MentorAIButton';
 import { WhisperNetOverlay } from '@/components/feature/whisper-net/WhisperNetOverlay';
 import { WhisperNetToggleButton } from '@/components/ui/whisper-net-toggle-button';
+import { ThemeProvider, ThemeScript } from '@/components/theme/ThemeProvider';
+import { UserProvider } from '@/contexts/UserContext';
+import { MentorAIProvider } from '@/contexts/MentorAIContext';
+import { WhisperNetProvider } from '@/contexts/WhisperNetContext';
 
 export const metadata: Metadata = {
   title: 'YourSpace - Interactive Creative Labs',
@@ -19,8 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-const ThemeInitializationScript = `(function(){const d='yourspace-theme-id',e='yourspace-theme-registry',f='dark';function a(b,c){const g=document.documentElement;g.setAttribute('data-theme',b);let h=b==='dark';b.startsWith('custom:')&&c?.[b]&&(h=c[b].tokens.mode==='dark');g.classList.toggle('dark',h)}try{const b=localStorage.getItem(d),c=localStorage.getItem(e),g=c?JSON.parse(c):{};b?a(b,g):a(f,{})}catch(b){a(f,{})}})();`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: ThemeInitializationScript }} />
+        <ThemeScript />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -38,19 +39,25 @@ export default function RootLayout({
         />
       </head>
       <body className={cn("font-body antialiased min-h-screen flex flex-col")}>
-        <Providers>
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-          <BottomTabBar />
-          <MentorAIDrawer />
-          <MentorAIButton />
-          <WhisperNetOverlay />
-          <WhisperNetToggleButton />
-        </Providers>
+        <ThemeProvider defaultTheme="system">
+          <UserProvider>
+            <MentorAIProvider>
+              <WhisperNetProvider>
+                <Header />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+                <Toaster />
+                <BottomTabBar />
+                <MentorAIDrawer />
+                <MentorAIButton />
+                <WhisperNetOverlay />
+                <WhisperNetToggleButton />
+              </WhisperNetProvider>
+            </MentorAIProvider>
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
