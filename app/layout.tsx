@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'YourSpace - Interactive Creative Labs',
   description: 'A digital ecosystem for artists to create, collaborate, and monetize their work in personalized virtual spaces with AI-driven insights and community features.',
   icons: {
-    icon: '/favicon.ico', 
+    icon: '/favicon.ico',
   },
 };
 

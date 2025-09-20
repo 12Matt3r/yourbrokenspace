@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Features } from '@/components/feature/explore/Features';
+import { Features } from '../components/feature/explore/Features';
 import type { Feature } from '@/components/feature/explore/Features';
 
 // mock Next/Image to plain <img>
@@ -33,11 +33,13 @@ describe('Features images have correct alt text', () => {
     ];
 
     render(<Features features={features} />);
-    const imgs = screen.getAllByRole('img');
-    expect(imgs[0]).toHaveAttribute('alt', features[0].altText);
 
-    // For decorative images, find them by other means if role is removed
     const listItems = screen.getAllByRole('listitem');
+    expect(listItems).toHaveLength(2);
+
+    const firstItemImg = within(listItems[0]).getByRole('img');
+    expect(firstItemImg).toHaveAttribute('alt', features[0].altText);
+
     const secondItemImg = listItems[1].querySelector('img');
     expect(secondItemImg).not.toBeNull();
     expect(secondItemImg).toHaveAttribute('alt', '');

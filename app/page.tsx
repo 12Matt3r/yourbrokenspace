@@ -57,19 +57,14 @@ export default function HomePage() {
 
         <div className="flex flex-col gap-10 px-4 py-10">
           <div className="flex flex-col gap-4">
-            <h1 id="features-heading" className="tracking-tight text-[32px] font-bold leading-tight sm:text-4xl max-w-[720px]">
+            <h1 className="tracking-tight text-[32px] font-bold leading-tight sm:text-4xl max-w-[720px]">
               Core Features
             </h1>
             <p className="text-muted text-base font-normal leading-normal max-w-[720px]">
               YourSpace provides a comprehensive suite of tools to empower creators at every stage of their journey.
             </p>
           </div>
-          <section aria-labelledby="features-heading">
-            <h2 className="sr-only">
-              Features
-            </h2>
-            <Features features={features} />
-          </section>
+          <Features features={features} />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import {
   getResolvedTheme,
   persistTheme,
   readPersistedTheme,
-} from '@/components/theme/dom';
+} from '..';
 
 const q = () => document.documentElement;
 
